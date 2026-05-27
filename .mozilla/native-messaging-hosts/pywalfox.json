@@ -1,0 +1,7 @@
+{
+  "name": "pywalfox",
+  "description": "Pywalfox native messenger",
+  "path": "/run/current-system/sw/bin/pywalfox",
+  "type": "stdio",
+  "allowed_extensions": ["pywalfox@frewacom.org"]
+}
