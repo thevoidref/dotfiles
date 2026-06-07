@@ -1,0 +1,118 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "sixel",
+        "source": "~/.dotfiles/.config/fastfetch/logo.png",
+        "padding": {
+            "right": 2
+        },
+        "color": {
+            "1": "33",
+            "2": "37",
+            "3": "35"
+        }
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        { "type": "break" },
+        {
+            "type": "custom",
+            "format": "\u001b[36m┌───────────────── Void"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[36m│  \u001b[35mSystem"
+        },
+        {
+            "type": "os",
+            "key": "\u001b[36m│  \u001b[33m  \u001b[0mOS",
+            "format": "{2}",
+            "keyWidth": 20
+        },
+        {
+            "type": "kernel",
+            "key": "\u001b[36m│  \u001b[33m  \u001b[0mKernel",
+            "format": "{2}",
+            "keyWidth": 20
+        },
+        {
+          "type": "uptime",
+          "key": "\u001b[36m│  \u001b[33m  \u001b[0mUptime",
+          "format": "{1} days {2} hours {3} mins",
+          "keyWidth": 20
+        },
+        {
+            "type": "command",
+            "key": "\u001b[36m│  \u001b[33m  \u001b[0mOS Age",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo \"$days_difference days\"",
+            "keyWidth": 20
+        },
+        {
+          "type": "packages",
+          "key": "\u001b[36m│  \u001b[33m󰏖  \u001b[0mPackages",
+          "keyWidth": 20
+        },
+
+
+        {
+            "type": "custom",
+            "format": "\u001b[36m│  \u001b[35mDesktop"
+        },
+        {
+            "type": "display",
+            "key": "\u001b[36m│  \u001b[33m󰍹  \u001b[0mResolution",
+            "format": "{1}x{2} @ {3} Hz",
+            "keyWidth": 20
+        },
+        {
+            "type": "wm",
+            "key": "\u001b[36m│  \u001b[33m  \u001b[0mWM",
+            "keyWidth": 20
+        },
+        {
+            "type": "shell",
+            "key": "\u001b[36m│  \u001b[33m  \u001b[0mShell",
+            "keyWidth": 20
+        },
+        {
+          "type": "terminal",
+          "key": "\u001b[36m│  \u001b[33m  \u001b[0mTerminal",
+          "keyWidth": 20
+        },
+
+
+        {
+            "type": "custom",
+            "format": "\u001b[36m│  \u001b[35mHardware"
+        },
+        {
+            "type": "cpu",
+            "key": "\u001b[36m│  \u001b[33m  \u001b[0mCPU",
+            "format": "{1} ({4}) @ {7}",
+            "keyWidth": 20
+        },
+        {
+            "type": "gpu",
+            "key": "\u001b[36m│  \u001b[33m󰢮  \u001b[0mGPU",
+            "format": "{2}",
+            "keyWidth": 20
+        },
+        {
+            "type": "memory",
+            "key": "\u001b[36m│  \u001b[33m  \u001b[0mMemory",
+            "keyWidth": 20
+        },
+
+        {
+            "type": "custom",
+            "format": "\u001b[36m└────────────────────────────────────────────────────┘"
+        },
+
+        {
+            "type": "custom",
+            "format": "                   \u001b[31m● \u001b[32m● \u001b[33m● \u001b[34m● \u001b[35m● \u001b[36m● \u001b[37m● \u001b[0m●"
+        }
+    ]
+}
