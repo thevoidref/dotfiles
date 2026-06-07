@@ -1,5 +1,5 @@
 [user]
-    name = The Void Ref
+	name = Void
     email = thevoidref@gmail.com
 [core]
     editor = nvim
