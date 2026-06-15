@@ -30,14 +30,15 @@ end
 
 set -l choice (
     printf "%s\n" \
-        ArchWiki Noctalia Niri NixPkgs \
+        "Arch Wiki" Noctalia Niri NixPkgs \
         Yazi Fish PostgreSQL Wallhaven \
+        "Stack Overflow" Mdn \
     | sort \
     | fuzzel --dmenu --prompt "Pages ❯ "
 )
 
 switch $choice
-    case ArchWiki
+    case "Arch Wiki"
         smart_open "https://wiki.archlinux.org"
     case Noctalia
         smart_open "https://docs.noctalia.dev/v4/"
@@ -54,6 +55,11 @@ switch $choice
         smart_open "https://yazi-rs.github.io/docs/quick-start"
     case Wallhaven
         smart_open "https://wallhaven.cc/"
+
+    case "Stack Overflow"
+        smart_open https://stackoverflow.com/questions
+    case Mdn
+        smart_open "https://developer.mozilla.org/en-US/"
 
         
 end

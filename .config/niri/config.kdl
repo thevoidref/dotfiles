@@ -7,9 +7,7 @@
     // https://github.com/niri-wm/niri/wiki/Configuration:-Miscellaneous
 
 prefer-no-csd
-spawn-at-startup "noctalia-shell"
-spawn-at-startup "foot"
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-at-startup "foot" "~/.dotfiles/scripts/niri-startup.sh"
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 cursor {
@@ -46,13 +44,15 @@ layout {
     center-focused-column "on-overflow"
 
     preset-column-widths {
-        proportion 0.35
+        proportion 0.25
         proportion 0.5
-        proportion 0.65
+        proportion 0.8
+        proportion 1.0
     }
     preset-window-heights {
-        proportion 0.33
-        proportion 0.66
+        proportion 0.35
+        proportion 0.50
+        proportion 0.65
         proportion 1.00
     }
     default-column-width { }
@@ -281,6 +281,58 @@ binds {
 
     Mod+Shift+F                                         { expand-column-to-available-width; }
     Mod+Ctrl+C                                          { center-visible-columns; }
+}
+
+    // Startup Setup
+
+// Workspace 1 rules
+window-rule {
+    match app-id="^cmatrix$"
+    match at-startup=true
+    open-on-workspace "1"
+    default-column-width { proportion 0.25; }
+}
+window-rule {
+    match app-id="^btop$"
+    match at-startup=true
+    open-on-workspace "1"
+    default-column-width { proportion 0.5; }
+}
+window-rule {
+    match app-id="^obsidian$"
+    match at-startup=true
+    open-on-workspace "1"
+    default-column-width { proportion 0.9; }
+}
+window-rule {
+    match app-id="^firefox$"
+    default-column-width { proportion 0.8; }
+}
+window-rule {
+    match app-id="^vesktop$"
+    match at-startup=true
+    open-on-workspace "1"
+    default-column-width { proportion 0.8; }
+}
+
+// Workspace 2 rules
+window-rule {
+    match app-id="^codium$"
+    match at-startup=true
+    open-on-workspace "2"
+    default-column-width { proportion 0.8; }
+}
+window-rule {
+    match app-id="^foot1$"
+    match at-startup=true
+    open-on-workspace "2"
+    default-window-height { proportion 0.5; }
+}
+window-rule {
+    match app-id="^foot2$" 
+    match at-startup=true
+    open-on-workspace "2"
+    default-window-height { proportion 0.5; }
 }
 
 include "./noctalia.kdl"
