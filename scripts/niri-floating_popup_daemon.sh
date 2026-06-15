@@ -8,6 +8,7 @@ RULES=(
     "firefox:Library"
     "firefox:History"
     'Thunar:Rename "'
+    'thunar:Rename "'
 )
 
 JQ_RULES=$(printf '%s\n' "${RULES[@]}" | jq -R . | jq -s .)

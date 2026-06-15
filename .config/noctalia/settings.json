@@ -460,7 +460,7 @@
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
-        "compactLockScreen": true,
+        "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableBlurBehind": false,
         "enableLockScreenCountdown": true,
@@ -495,7 +495,7 @@
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": true,
-        "lockScreenBlur": 0.6,
+        "lockScreenBlur": 0.5,
         "lockScreenCountdownDuration": 2000,
         "lockScreenMonitors": [
         ],
@@ -770,10 +770,6 @@
             },
             {
                 "enabled": true,
-                "id": "vicinae"
-            },
-            {
-                "enabled": true,
                 "id": "code"
             },
             {
@@ -783,6 +779,14 @@
             {
                 "enabled": true,
                 "id": "ghostty"
+            },
+            {
+                "enabled": true,
+                "id": "zenBrowser"
+            },
+            {
+                "enabled": true,
+                "id": "foot"
             }
         ],
         "enableUserTheming": false

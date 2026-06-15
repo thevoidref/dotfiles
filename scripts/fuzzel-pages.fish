@@ -54,4 +54,6 @@ switch $choice
         smart_open "https://yazi-rs.github.io/docs/quick-start"
     case Wallhaven
         smart_open "https://wallhaven.cc/"
+
+        
 end

@@ -14,6 +14,8 @@ abbr -a vim nvim
 abbr -a vi nvim
 abbr -a g git
 abbr -a dotfiles 'cd ~/.dotfiles'
+abbr -a cdnix 'cd ~/Code/Nixos'
+abbr -a nixsw 'sudo nixos-rebuild switch --flake /etc/nixos#dell-laptop'
 
 # ── Tools ─────────────────────────────────────────────────
 zoxide init fish | source

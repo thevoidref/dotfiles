@@ -20,7 +20,6 @@ find "$DOTFILES" \
   -not -path "$DOTFILES/.git/*" \
   -not -path "$DOTFILES/scripts/*" \
   -not -path "$DOTFILES/prompts/*" \
-  -not -path "$DOTFILES/nixos/*" \
   -not -name "README.md" \
   -not -name ".gitignore" \
   -type f | while read -r src; do
@@ -39,5 +38,13 @@ find "$DOTFILES" \
   echo "  linked: $rel"
 done
 
+count=$(find "$DOTFILES" \
+  -not -path "$DOTFILES/.git/*" \
+  -not -path "$DOTFILES/scripts/*" \
+  -not -path "$DOTFILES/prompts/*" \
+  -not -name "README.md" \
+  -not -name ".gitignore" \
+  -type f | wc -l)
+
 echo ""
-echo "Done. $(find $DOTFILES -not -path '$DOTFILES/.git/*' -not -name 'link.sh' -not -name 'README.md' -not -name '.gitignore' -type f | wc -l) files linked."
+echo "Done. $count files linked."

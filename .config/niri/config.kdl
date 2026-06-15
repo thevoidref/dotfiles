@@ -107,6 +107,9 @@ binds {
     Mod+Shift+P                                         { power-off-monitors; }
 
         // System Controls
+    
+    XF86Calculator                                      { spawn-sh "pgrep -x galculator >/dev/null && pkill -x galculator || galculator"; }
+    Ctrl+XF86Calculator                                 { spawn-sh "hyprpicker -a"; }
 
     XF86AudioLowerVolume        allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioRaiseVolume        allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
@@ -142,7 +145,7 @@ binds {
     Mod+Shift+D                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-pages.fish"; }
     Mod+Shift+W                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-projects.fish"; }
     Mod+Shift+A                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-prompts.fish"; }
-    Mod+Shift+S                                         { spawn-sh "scan.sh"; }
+    Mod+Ctrl+S                                          { spawn-sh "scan.sh"; }
 
     Shift+Alt+L                                         { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Alt+Escape                                          { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
