@@ -524,7 +524,7 @@
         "screenLock": "",
         "screenUnlock": "bash ~/.dotfiles/scripts/niri-floating_popup_daemon.sh &",
         "session": "",
-        "startup": "bash ~/.dotfiles/scripts/niri-floating_popup_daemon.sh &",
+        "startup": "bash ~/.dotfiles/scripts/niri-startup.sh > ~/.tmp/niri-startup_log.txt",
         "wallpaperChange": ""
     },
     "idle": {

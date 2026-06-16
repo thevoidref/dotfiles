@@ -1,14 +1,14 @@
 
 
         // https://niri-wm.github.io/niri/Configuration:-Introduction
-
-
+workspace "1"
+workspace "2"
+workspace "3"
 
     // https://github.com/niri-wm/niri/wiki/Configuration:-Miscellaneous
-
 prefer-no-csd
-spawn-at-startup "foot" "~/.dotfiles/scripts/niri-startup.sh"
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+spawn-at-startup "noctalia-shell"
 
 cursor {
     xcursor-theme "Capitaine Cursors (Gruvbox) - White"
@@ -288,29 +288,21 @@ binds {
 // Workspace 1 rules
 window-rule {
     match app-id="^cmatrix$"
-    match at-startup=true
     open-on-workspace "1"
     default-column-width { proportion 0.25; }
 }
 window-rule {
     match app-id="^btop$"
-    match at-startup=true
     open-on-workspace "1"
     default-column-width { proportion 0.5; }
 }
 window-rule {
     match app-id="^obsidian$"
-    match at-startup=true
     open-on-workspace "1"
     default-column-width { proportion 0.9; }
 }
 window-rule {
-    match app-id="^firefox$"
-    default-column-width { proportion 0.8; }
-}
-window-rule {
     match app-id="^vesktop$"
-    match at-startup=true
     open-on-workspace "1"
     default-column-width { proportion 0.8; }
 }
@@ -318,22 +310,16 @@ window-rule {
 // Workspace 2 rules
 window-rule {
     match app-id="^codium$"
-    match at-startup=true
     open-on-workspace "2"
     default-column-width { proportion 0.8; }
 }
 window-rule {
     match app-id="^foot1$"
-    match at-startup=true
+    match app-id="^foot2$"
     open-on-workspace "2"
-    default-window-height { proportion 0.5; }
 }
-window-rule {
-    match app-id="^foot2$" 
-    match at-startup=true
-    open-on-workspace "2"
-    default-window-height { proportion 0.5; }
-}
+
+// Workspace 3 rules
 
 include "./noctalia.kdl"
 
