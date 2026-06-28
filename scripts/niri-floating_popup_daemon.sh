@@ -20,7 +20,11 @@ niri msg --json event-stream | jq --unbuffered -c --argjson rules "$JQ_RULES" '
   | . as $w
   | $rules[]
   | split(":") as $r
-  | select($w.app_id == $r[0] and ($w.title != null) and ($w.title | contains($r[1])))
+  | select(
+      $w.app_id == $r[0] and 
+      ($w.title != null) and 
+      ($w.title | startswith($r[1]))
+    )
   | $w.id
 ' | while read -r id; do
     (

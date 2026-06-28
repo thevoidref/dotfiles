@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 # fuzzel-prompts.fish
 
-set -l prompt_dir ~/.dotfiles/prompts
+set -l prompt_dir ~/.dotfiles/strings
 
 cd "$prompt_dir"
 
@@ -10,7 +10,7 @@ set -l selected (
         --type f \
         --extension md \
     | sort \
-    | fuzzel --dmenu --prompt "Prompt ❯ "
+    | fuzzel --dmenu --prompt "Text ❯ "
 )
 
 test -z "$selected"; and exit 0
@@ -19,7 +19,7 @@ wl-copy < "$selected"
 
 set -l json (
     jq -cn \
-        --arg title "Prompt copied" \
+        --arg title "Text copied" \
         --arg body (path basename "$selected") \
         --arg icon "media-record" \
         '{title:$title, body:$body, icon:$icon}'

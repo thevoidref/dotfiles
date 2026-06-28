@@ -1,0 +1,7 @@
+Use imperative mood for title line, under 50 char
+
+Multiline description of commit; usually what changed and why (not how)
+Wrap the body at 72 characters.
+
+[Ticket: #123]
+[See: #234 #345]

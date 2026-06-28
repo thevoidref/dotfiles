@@ -1,8 +1,8 @@
 [user]
-	name = Void
+	name = thevoidref
 	email = 288313904+thevoidref@users.noreply.github.com
 [core]
-    editor = nvim
+	editor = codium
 [init]
     defaultBranch = main
 [push]

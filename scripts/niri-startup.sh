@@ -3,6 +3,9 @@
 
 niri msg action focus-workspace 1
 
+pavucontrol --tab=4 &
+sleep 0.5
+
 foot --app-id=cmatrix -e cmatrix &
 sleep 0.3
 
@@ -17,9 +20,7 @@ firefox \
     "https://chat.deepseek.com" \
     "https://mail.proton.me" \
     "https://outlook.live.com/mail/0" &
-sleep 1
-
-vesktop &
+sleep 2
 
 niri msg action focus-workspace 2
 
@@ -27,10 +28,9 @@ foot --app-id=foot1 &
 sleep 0.3
 
 codium "$HOME/.dotfiles/" &
-sleep 1
+sleep 2
 
-foot --app-id=foot2 &
-sleep 0.3
+vesktop &
 
 niri msg action focus-workspace 3
 

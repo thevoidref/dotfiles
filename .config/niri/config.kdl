@@ -1,9 +1,7 @@
 
 
         // https://niri-wm.github.io/niri/Configuration:-Introduction
-workspace "1"
-workspace "2"
-workspace "3"
+
 
     // https://github.com/niri-wm/niri/wiki/Configuration:-Miscellaneous
 prefer-no-csd
@@ -26,6 +24,7 @@ hotkey-overlay {
     // https://niri-wm.github.io/niri/Configuration:-Input
 
 input {
+    focus-follows-mouse max-scroll-amount="90%"
     keyboard {
         numlock
     }
@@ -64,6 +63,10 @@ layout {
 
     // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 
+workspace "1"
+workspace "2"
+workspace "3"
+
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
@@ -81,7 +84,7 @@ window-rule {
 }
 window-rule {
     match app-id="^firefox$" title="^Picture-in-Picture$"
-    match app-id="firefox" title="Sign in"
+    match app-id="^firefox$" title="^Sign in"
     match app-id="^org.inkscape.Inkscape$" title="New"
     match app-id="^org.inkscape.Inkscape$" title="Portable"
     match app-id="^qt6ct$"
@@ -89,6 +92,13 @@ window-rule {
     match app-id="^nwg-look$"
 
     open-floating true
+}
+window-rule {
+    match app-id="^qt6ct$"
+    match app-id="^galculator$"
+    match app-id="^nwg-look$"
+
+    min-width 560
 }
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
@@ -144,7 +154,7 @@ binds {
     Mod+C                                               { spawn "codium"; }
     Mod+Shift+D                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-pages.fish"; }
     Mod+Shift+W                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-projects.fish"; }
-    Mod+Shift+A                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-prompts.fish"; }
+    Mod+Shift+A                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-toclip.fish"; }
     Mod+Ctrl+S                                          { spawn-sh "scan.sh"; }
 
     Shift+Alt+L                                         { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
@@ -276,10 +286,10 @@ binds {
     Mod+Shift+Equal                                     { set-window-height "+10%"; }
 
     Mod+F                                               { maximize-column; }
-    Mod+Ctrl+F                                          { fullscreen-window; }
+    Mod+Shift+F                                          { fullscreen-window; }
     Mod+M                                               { maximize-window-to-edges; }
 
-    Mod+Shift+F                                         { expand-column-to-available-width; }
+    Mod+Ctrl+F                                         { expand-column-to-available-width; }
     Mod+Ctrl+C                                          { center-visible-columns; }
 }
 
@@ -288,6 +298,7 @@ binds {
 // Workspace 1 rules
 window-rule {
     match app-id="^cmatrix$"
+    match app-id="^org.pulseaudio.pavucontrol$"
     open-on-workspace "1"
     default-column-width { proportion 0.25; }
 }
@@ -308,8 +319,10 @@ window-rule {
 }
 
 // Workspace 2 rules
+    // FIXME - Not working (should be codium naming the windows after launch)
 window-rule {
-    match app-id="^codium$"
+    match title=".dotfiles - VSCodium$"
+    match title="Nixos - VSCodium$"
     open-on-workspace "2"
     default-column-width { proportion 0.8; }
 }
