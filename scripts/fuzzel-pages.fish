@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 # fuzzel-docs.fish
+
 function smart_open
     set -l url $argv[1]
 

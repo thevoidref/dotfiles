@@ -37,7 +37,7 @@ input {
     // https://niri-wm.github.io/niri/Configuration:-Layout
 
 layout {
-    gaps 6
+    gaps 10
 
     // always | never | on-overflow
     center-focused-column "on-overflow"

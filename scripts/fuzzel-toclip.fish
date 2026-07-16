@@ -26,3 +26,4 @@ set -l json (
 )
 
 noctalia-shell ipc call toast send "$json"
+

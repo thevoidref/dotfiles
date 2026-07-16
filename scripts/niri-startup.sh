@@ -4,7 +4,7 @@
 niri msg action focus-workspace 1
 
 pavucontrol --tab=4 &
-sleep 0.5
+sleep 1
 
 foot --app-id=cmatrix -e cmatrix &
 sleep 0.3
