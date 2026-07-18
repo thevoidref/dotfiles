@@ -20,6 +20,7 @@ find "$DOTFILES" \
   -not -path "$DOTFILES/.git/*" \
   -not -path "$DOTFILES/scripts/*" \
   -not -path "$DOTFILES/prompts/*" \
+  -not -path "$DOTFILES/strings/*" \
   -not -name "README.md" \
   -not -name ".gitignore" \
   -type f | while read -r src; do
