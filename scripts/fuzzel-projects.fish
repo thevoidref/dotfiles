@@ -9,6 +9,8 @@ for root in $roots
         continue
     end
 
+    set -a choices "~/"(string replace "$HOME/" "" "$root" | string trim -r -c /)
+
     for dir in "$root"/*/
         test -d "$dir" && set -a choices "~/"(string replace "$HOME/" "" "$dir" | string trim -r -c /)
     end
