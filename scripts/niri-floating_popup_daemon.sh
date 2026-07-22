@@ -4,7 +4,6 @@
 set -euo pipefail
 
 RULES=(
-    "firefox:Sign in"
     "firefox:Library"
     "firefox:History"
     'Thunar:Rename "'

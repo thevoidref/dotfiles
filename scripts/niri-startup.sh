@@ -19,14 +19,14 @@ sleep 1
 
 firefox \
     "https://deezer.com" \
-    "https://chat.deepseek.com" \
+    "https://leboncoin.fr" \
     "https://mail.proton.me" \
     "https://outlook.live.com/mail/0" &
 sleep 2
 
 niri msg action focus-workspace 2
 
-foot --app-id=foot1 $LLAMA_SERV --port 8011 &
+foot --app-id=foot1 $LLAMA_SERV --port 8012 &
 sleep 0.3
 
 codium "$HOME/.dotfiles/" &

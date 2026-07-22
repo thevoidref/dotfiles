@@ -34,7 +34,8 @@ set -l choice (
         "Arch Wiki" Noctalia Niri NixPkgs \
         Yazi Fish PostgreSQL Wallhaven \
         "Stack Overflow" Mdn Git "W3C Validator" \
-        "Odin Project" W3Schools Github \
+        "Odin Project" W3Schools Github OpenCode \
+        Astro \
     | sort \
     | fuzzel --dmenu --prompt "Pages ❯ "
 )
@@ -73,5 +74,10 @@ switch $choice
         smart_open "https://www.w3schools.com/"
     case Github
         smart_open "https://github.com/"
+    case OpenCode
+        smart_open "https://opencode.ai/docs"
+
+    case Astro
+        smart_open "https://docs.astro.build/en/getting-started/"
         
 end
