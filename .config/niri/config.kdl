@@ -27,6 +27,11 @@ input {
     focus-follows-mouse max-scroll-amount="90%"
     keyboard {
         numlock
+        xkb {
+            layout "us"
+            variant "intl"
+            options "ctrl:nocaps"
+        }
     }
     touchpad {
         tap
