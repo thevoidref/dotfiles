@@ -30,7 +30,7 @@ input {
         xkb {
             layout "us"
             variant "intl"
-            options "compose:ralt,ctrl:nocaps"
+            options "ctrl:nocaps"
         }
     }
     touchpad {
