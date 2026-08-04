@@ -26,6 +26,12 @@ niri msg action focus-workspace 2
 
 sleep 0.3
 
+codium "$HOME/Code/Nixos/" &
+sleep 2
+
+foot
+sleep 0.3
+
 codium "$HOME/.dotfiles/" &
 sleep 2
 
@@ -33,7 +39,11 @@ vesktop &
 
 niri msg action focus-workspace 3
 
-firefox &
+firefox \
+    "https://chat.deepseek.com" \
+    "https://chat.qwen.ai" \
+    "https://www.theodinproject.com/paths/full-stack-javascript" &
+
 sleep 1
 
 niri msg action focus-workspace 1

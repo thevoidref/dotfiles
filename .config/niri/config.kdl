@@ -7,6 +7,7 @@
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "xwayland-satellite"
 
 cursor {
     xcursor-theme "Capitaine Cursors (Gruvbox) - White"
@@ -16,6 +17,7 @@ cursor {
 }
 environment {
   QT_QPA_PLATFORMTHEME "qt6ct"
+  DISPLAY ":0"
 }
 hotkey-overlay {
     skip-at-startup
@@ -85,7 +87,7 @@ window-rule {
 window-rule {
     match app-id="foot"
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.4; }
 }
 window-rule {
     match app-id="^firefox$" title="^Picture-in-Picture$"
@@ -338,6 +340,14 @@ window-rule {
 }
 
 // Workspace 3 rules
+window-rule {
+    match app-id="Dofus"
+    open-floating true
+}
+window-rule {
+    match app-id="gamescope"
+    open-floating true
+}
 
 include "./noctalia.kdl"
 
