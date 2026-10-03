@@ -44,7 +44,7 @@ switch $choice
     case "Arch Wiki"
         smart_open "https://wiki.archlinux.org"
     case Noctalia
-        smart_open "https://docs.noctalia.dev/v4/"
+        smart_open "https://docs.noctalia.dev/"
     case Niri
         smart_open "https://niri-wm.github.io/niri/"
     case NixPkgs

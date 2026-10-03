@@ -1,0 +1,10 @@
+window-decoration = none
+
+window-padding-x = 12
+window-padding-y = 4
+window-padding-balance = true
+
+background-opacity = 0.96
+background-blur = 12
+
+theme = noctalia
