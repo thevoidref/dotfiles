@@ -35,7 +35,7 @@ set -l choice (
         Yazi Fish PostgreSQL Wallhaven \
         "Stack Overflow" Mdn Git "W3C Validator" \
         "Odin Project" W3Schools Github OpenCode \
-        Astro TailWindCSS\
+        Astro TailWindCSS \
     | sort \
     | fuzzel --dmenu --prompt "Pages ❯ "
 )

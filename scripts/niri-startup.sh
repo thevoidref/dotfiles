@@ -29,7 +29,7 @@ sleep 0.3
 codium "$HOME/Code/Nixos/" &
 sleep 2
 
-foot
+foot &
 sleep 0.3
 
 codium "$HOME/.dotfiles/" &
