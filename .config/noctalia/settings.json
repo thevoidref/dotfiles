@@ -258,7 +258,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Catppuccin",
+        "predefinedScheme": "Cyan Slate",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": true
@@ -558,12 +558,12 @@
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
         "enabled": true,
         "forced": false,
-        "manualSunrise": "06:00",
-        "manualSunset": "18:30",
+        "manualSunrise": "05:30",
+        "manualSunset": "19:00",
         "nightTemp": "4080"
     },
     "noctaliaPerformance": {

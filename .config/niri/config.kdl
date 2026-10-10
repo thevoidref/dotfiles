@@ -10,11 +10,12 @@ spawn-at-startup "noctalia-shell"
 spawn-at-startup "xwayland-satellite"
 
 cursor {
-    xcursor-theme "Capitaine Cursors (Gruvbox) - White"
+    xcursor-theme "Capitaine Cursors (Nord) - White"
     xcursor-size 36
     hide-when-typing
     hide-after-inactive-ms 10000
 }
+
 environment {
   QT_QPA_PLATFORMTHEME "qt6ct"
   DISPLAY ":0"
