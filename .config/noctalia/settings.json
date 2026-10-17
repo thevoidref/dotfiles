@@ -74,7 +74,7 @@
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
-        "useSeparateOpacity": false,
+        "useSeparateOpacity": true,
         "widgetSpacing": 6,
         "widgets": {
             "center": [
@@ -258,7 +258,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Cyan Slate",
+        "predefinedScheme": "Catppuccin",
         "schedulingMode": "off",
         "syncGsettings": true,
         "useWallpaperColors": true
@@ -444,7 +444,7 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-        "animationSpeed": 1,
+        "animationSpeed": 1.25,
         "autoStartAuth": false,
         "avatarImage": "/home/voidref/.face",
         "boxRadiusRatio": 1,
@@ -548,7 +548,7 @@
         "weatherTaliaMascotAlways": false
     },
     "network": {
-        "bluetoothAutoConnect": true,
+        "bluetoothAutoConnect": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 60000,
@@ -784,7 +784,7 @@
     "ui": {
         "boxBorderEnabled": true,
         "fontDefault": "Inter Display",
-        "fontDefaultScale": 0.89,
+        "fontDefaultScale": 0.95,
         "fontFixed": "Google Sans Code",
         "fontFixedScale": 1.03,
         "panelBackgroundOpacity": 0.85,

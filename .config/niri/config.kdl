@@ -4,10 +4,13 @@
 
 
     // https://github.com/niri-wm/niri/wiki/Configuration:-Miscellaneous
-prefer-no-csd
+
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+prefer-no-csd
+
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 cursor {
     xcursor-theme "Capitaine Cursors (Nord) - White"
@@ -20,9 +23,15 @@ environment {
   QT_QPA_PLATFORMTHEME "qt6ct"
   DISPLAY ":0"
 }
+
 hotkey-overlay {
     skip-at-startup
 }
+
+overview {
+    backdrop-color "#161616"
+}
+
 
     // https://niri-wm.github.io/niri/Configuration:-Input
 
@@ -64,6 +73,28 @@ output "DP-2" {
     }
 }
 
+    // https://niri-wm.github.io/niri/Configuration%3A-Named-Workspaces.html
+
+workspace "1" {
+    open-on-output "DP-1"
+}
+workspace "2" {
+    open-on-output "DP-1"
+}
+workspace "3" {
+    open-on-output "DP-1"
+}
+
+workspace "A" {
+    open-on-output "DP-2"
+}
+workspace "B" {
+    open-on-output "DP-2"
+}
+workspace "C" {
+    open-on-output "DP-2"
+}
+
     // https://niri-wm.github.io/niri/Configuration:-Layout
 
 layout {
@@ -93,48 +124,59 @@ layout {
 
     // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 
-workspace "1"
-workspace "2"
-workspace "3"
-
 window-rule {
-    geometry-corner-radius 4
+    geometry-corner-radius 8
     clip-to-geometry true
 }
+
 window-rule {
     match app-id="foot"
     match title="nvim"
 
     opacity 0.92;
 }
+
 window-rule {
     match app-id="foot"
 
     default-column-width { proportion 0.4; }
 }
+
 window-rule {
     match app-id="^firefox$" title="^Picture-in-Picture$"
     match app-id="^firefox$" title="^Sign in"
+    match app-id="^firefox$" title="Choose User Profile"
     match app-id="^org.inkscape.Inkscape$" title="New"
     match app-id="^org.inkscape.Inkscape$" title="Portable"
     match app-id="^qt6ct$"
-    match app-id="^galculator$"
+    match app-id="^org.gnome.Calculator$"
     match app-id="^nwg-look$"
 
     open-floating true
 }
+
 window-rule {
     match app-id="^qt6ct$"
-    match app-id="^galculator$"
+    match app-id="^org.gnome.Calculator$"
     match app-id="^nwg-look$"
 
-    min-width 560
+    min-width 480
 }
+
 window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match title=r#"(?i)obsproject"#
 
     block-out-from "screen-capture"
+}
+
+window-rule {
+    match app-id=r#"^firefox-pro$"#
+    open-on-output "DP-1"
+}
+
+window-rule {
+    match app-id=r#"^firefox$"#
+    open-on-output "DP-2"
 }
 
     // https://niri-wm.github.io/niri/Configuration%3A-Key-Bindings.html
@@ -148,8 +190,8 @@ binds {
 
         // System Controls
     
-    XF86Calculator                                      { spawn-sh "pgrep -x galculator >/dev/null && pkill -x galculator || galculator"; }
-    Ctrl+XF86Calculator                                 { spawn-sh "hyprpicker -a"; }
+    XF86AudioNext                                       { spawn-sh "pgrep -x .gnome-calculat >/dev/null && pkill -x .gnome-calculat || gnome-calculator"; }
+    Ctrl+XF86AudioNext                                  { spawn-sh "hyprpicker -a"; }
 
     XF86AudioLowerVolume        allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioRaiseVolume        allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
@@ -167,7 +209,7 @@ binds {
     XF86MonBrightnessUp         allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
     XF86MonBrightnessDown       allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
-    Shift+XF86AudioPlay         allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "airplaneMode" "toggle"; }
+    Alt+XF86AudioPlay           allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "airplaneMode" "toggle"; }
 
     Print                                               { screenshot; }
     Ctrl+Print                                          { screenshot-screen; }
@@ -185,6 +227,7 @@ binds {
     Mod+Shift+D                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-pages.fish"; }
     Mod+Shift+W                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-projects.fish"; }
     Mod+Shift+A                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || fuzzel-toclip.fish"; }
+    Mod+Shift+V                                         { spawn-sh "pgrep -x fuzzel >/dev/null && pkill -x fuzzel || cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
     Mod+Ctrl+S                                          { spawn-sh "scan.sh"; }
 
     Shift+Alt+L                                         { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
@@ -265,7 +308,7 @@ binds {
     Mod+Ctrl+9                                          { move-column-to-workspace 9; }
 
     Mod+V                                               { toggle-window-floating; }
-    Mod+Shift+V                                         { switch-focus-between-floating-and-tiling; }
+    Mod+Tab                                             { switch-focus-between-floating-and-tiling; }
     Mod+W                                               { toggle-column-tabbed-display; }
 
     Mod+Ctrl+WheelScrollRight                           { move-column-right; }
@@ -300,10 +343,10 @@ binds {
     Mod+Shift+Equal                                     { set-window-height "+10%"; }
 
     Mod+F                                               { maximize-column; }
-    Mod+Shift+F                                          { fullscreen-window; }
+    Mod+Shift+F                                         { fullscreen-window; }
     Mod+M                                               { maximize-window-to-edges; }
 
-    Mod+Ctrl+F                                         { expand-column-to-available-width; }
+    Mod+Ctrl+F                                          { expand-column-to-available-width; }
     Mod+Ctrl+C                                          { center-visible-columns; }
 }
 
@@ -347,10 +390,6 @@ window-rule {
 }
 
 // Workspace 3 rules
-window-rule {
-    match app-id="Dofus"
-    open-floating true
-}
 window-rule {
     match app-id="gamescope"
     open-floating true

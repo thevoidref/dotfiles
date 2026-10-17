@@ -14,18 +14,18 @@ function smart_open
         jq -r --argjson ws "$ws" '
             .[]
             | select(.workspace_id == $ws)
-            | select((.app_id // "") | test("firefox|chrome|chromium|brave"; "i"))
+            | select((.app_id // "") | test("firefox-pro"; "i"))
             | .id
         ' |
         head -n1
     )
 
     if test -n "$browser_id"
-        firefox "$url" >/dev/null 2>&1 &
+        firefox --no-remote -P pro --name firefox-pro "$url" >/dev/null 2>&1 &
         sleep 0.15
         niri msg action focus-window --id "$browser_id"
     else
-        firefox --new-window "$url" >/dev/null 2>&1 &
+        firefox --no-remote -P pro --name firefox-pro --new-window "$url" >/dev/null 2>&1 &
     end
 end
 
@@ -35,7 +35,7 @@ set -l choice (
         Yazi Fish PostgreSQL Wallhaven \
         "Stack Overflow" Mdn Git "W3C Validator" \
         "Odin Project" W3Schools Github OpenCode \
-        Astro TailWindCSS \
+        Astro TailWindCSS WallpaperCave \
     | sort \
     | fuzzel --dmenu --prompt "Pages ❯ "
 )
@@ -81,5 +81,7 @@ switch $choice
         smart_open "https://docs.astro.build/en/getting-started/"
     case TailWindCSS
         smart_open "https://tailwindcss.com/docs/installation/using-vite"
+    case WallpaperCave
+        smart_open "https://wallpapercave.com/"
         
 end
