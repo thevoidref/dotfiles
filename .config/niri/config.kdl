@@ -75,23 +75,23 @@ output "DP-2" {
 
     // https://niri-wm.github.io/niri/Configuration%3A-Named-Workspaces.html
 
-workspace "1" {
+workspace "A1" {
     open-on-output "DP-1"
 }
-workspace "2" {
+workspace "A2" {
     open-on-output "DP-1"
 }
-workspace "3" {
+workspace "A3" {
     open-on-output "DP-1"
 }
 
-workspace "A" {
+workspace "B1" {
     open-on-output "DP-2"
 }
-workspace "B" {
+workspace "B2" {
     open-on-output "DP-2"
 }
-workspace "C" {
+workspace "B3" {
     open-on-output "DP-2"
 }
 
@@ -105,8 +105,11 @@ layout {
 
     preset-column-widths {
         proportion 0.25
+        proportion 0.4
         proportion 0.5
+        proportion 0.65
         proportion 0.8
+        proportion 0.95
         proportion 1.0
     }
     preset-window-heights {
@@ -190,13 +193,13 @@ binds {
 
         // System Controls
     
-    XF86AudioNext                                       { spawn-sh "pgrep -x .gnome-calculat >/dev/null && pkill -x .gnome-calculat || gnome-calculator"; }
-    Ctrl+XF86AudioNext                                  { spawn-sh "hyprpicker -a"; }
+    XF86AudioPlay                                       { spawn-sh "pgrep -x .gnome-calculat >/dev/null && pkill -x .gnome-calculat || gnome-calculator"; }
+    Ctrl+XF86AudioPlay                                  { spawn-sh "hyprpicker -a"; }
 
     XF86AudioLowerVolume        allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioRaiseVolume        allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioMute               allow-when-locked=true  { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioPlay               allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
+    XF86AudioNext               allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
 
     Ctrl+XF86AudioLowerVolume   allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.1-"; }
     Ctrl+XF86AudioRaiseVolume   allow-when-locked=true  { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.1+ -l 1.0"; }
@@ -352,47 +355,24 @@ binds {
 
     // Startup Setup
 
-// Workspace 1 rules
+// Workspace B2 rules
 window-rule {
     match app-id="^cmatrix$"
     match app-id="^org.pulseaudio.pavucontrol$"
-    open-on-workspace "1"
+    open-on-workspace "B2"
     default-column-width { proportion 0.25; }
 }
 window-rule {
     match app-id="^btop$"
-    open-on-workspace "1"
+    open-on-workspace "B2"
     default-column-width { proportion 0.5; }
 }
-window-rule {
-    match app-id="^obsidian$"
-    open-on-workspace "1"
-    default-column-width { proportion 0.9; }
-}
+
+// Workspace B3 rules
 window-rule {
     match app-id="^vesktop$"
-    open-on-workspace "1"
+    open-on-workspace "B3"
     default-column-width { proportion 0.8; }
-}
-
-// Workspace 2 rules
-    // FIXME - Not working (should be codium naming the windows after launch)
-window-rule {
-    match title=".dotfiles - VSCodium$"
-    match title="Nixos - VSCodium$"
-    open-on-workspace "2"
-    default-column-width { proportion 0.8; }
-}
-window-rule {
-    match app-id="^foot1$"
-    match app-id="^foot2$"
-    open-on-workspace "2"
-}
-
-// Workspace 3 rules
-window-rule {
-    match app-id="gamescope"
-    open-floating true
 }
 
 // Background fix

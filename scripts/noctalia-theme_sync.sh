@@ -43,7 +43,7 @@ for THEME in "${THEMES[@]}"; do
     echo "Applying theme: $THEME"
 
     python3 "$TEMPLATE_PROCESSOR" \
-        --scheme ~/.cache/noctalia/predefined-scheme.json \
+        --scheme ~/.config/noctalia/colors.json \
         --mode dark \
         --render "$TEMPLATE:$THEME"
 done
