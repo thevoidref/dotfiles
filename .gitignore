@@ -1,0 +1,24 @@
+# SSH — jamais
+.ssh/
+
+# Secrets génériques
+*.pem
+*.key
+id_*
+.env
+.env.*
+*secret*
+*token*
+.netrc
+.git-credentials
+
+# Perso / privé
+strings/
+
+# Images copyright
+.mozilla/startpage-main/makima.jpg
+
+# Bruit
+.DS_Store
+*.swp
+*~
