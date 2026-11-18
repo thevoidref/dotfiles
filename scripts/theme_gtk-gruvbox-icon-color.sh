@@ -20,9 +20,17 @@ done
 
 # 1. Clone or update repo
 mkdir -p "$ICON_DIR"
-if [ -d "$REPO_DIR" ]; then
+if [ -d "$REPO_DIR/.git" ]; then
     echo "Existing icon pack detected. Pulling latest updates..."
-    git -C "$REPO_DIR" pull
+    if ! git -C "$REPO_DIR" pull; then
+        echo "Git pull failed. Re-cloning repository..."
+        rm -rf "$REPO_DIR"
+        git clone "$REPO_URL" "$REPO_DIR"
+    fi
+elif [ -d "$REPO_DIR" ]; then
+    echo "Existing icon pack detected (no git). Re-cloning for updates..."
+    rm -rf "$REPO_DIR"
+    git clone "$REPO_URL" "$REPO_DIR"
 else
     echo "Cloning Gruvbox Plus Icon Pack into user space..."
     git clone "$REPO_URL" "$REPO_DIR"

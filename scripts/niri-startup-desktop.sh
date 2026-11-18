@@ -10,11 +10,11 @@ niri msg action focus-workspace B1
 
 firefox \
     "https://mail.proton.me" \
-    "https://outlook.live.com/mail/" \
+    "https://mail.google.com/mail/u/1/" \
     "https://ksuite.infomaniak.com/mail/" \
     "https://leboncoin.fr" \
-    "https://dashboard.twitch.tv/u/thevoidref/stream-manager" \
     "https://chat.qwen.ai" \
+    "https://chatgpt.com" \
     "https://claude.ai/new" &
 sleep 1
 
@@ -54,9 +54,9 @@ sleep 3
 
 
 niri msg action focus-workspace B1
-sleep 0.3
+# sleep 0.3
 
-obs --scene "Code" --profile "Main" &
+# obs --scene "Code" --profile "Main" &
 
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"

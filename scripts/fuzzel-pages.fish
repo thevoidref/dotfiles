@@ -35,7 +35,7 @@ set -l choice (
         Yazi Fish PostgreSQL Wallhaven \
         "Stack Overflow" Mdn Git "W3C Validator" \
         "Odin Project" W3Schools Github OpenCode \
-        Astro TailWindCSS WallpaperCave \
+        Astro TailWindCSS WallpaperCave localHost \
     | sort \
     | fuzzel --dmenu --prompt "Pages ❯ "
 )
@@ -83,5 +83,7 @@ switch $choice
         smart_open "https://tailwindcss.com/docs/installation/using-vite"
     case WallpaperCave
         smart_open "https://wallpapercave.com/"
+    case localHost
+        smart_open "http://localhost:4321/"
         
 end
