@@ -17,9 +17,7 @@ abbr -a g git
 abbr -a dotfiles 'cd ~/.dotfiles'
 abbr -a cdnix 'cd ~/Code/Nixos'
 abbr -a nixsw 'sudo nixos-rebuild switch --flake /etc/nixos#north-desktop'
-abbr -a ytdl 'cd ~/Apps && ./yt-dlp --parse-metadata "title:%(artist)s - %(title)s" \
-       --replace-in-metadata "title" "(?i)\s*[\(\[]lyric video[\)\]]" "" \
-       --embed-metadata -P "~/Music/Stream" -o "%(title)s.%(ext)s" -x -f bestaudio'
+abbr -a ytdl 'cd ~/Projects/Ytdl && ./ytdl.sh'
 abbr -a dofmulti 'cd ~/Code/Games/Dofus && nix-shell'
 
 # ── Tools ─────────────────────────────────────────────────

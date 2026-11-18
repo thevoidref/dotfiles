@@ -9,10 +9,14 @@ sleep 0.2
 niri msg action focus-workspace B1
 
 firefox \
-    "https://mail.proton.me" \
+    "https://mail.proton.me/u/2/" \
+    "https://mail.proton.me/u/4/" \
     "https://mail.google.com/mail/u/1/" \
     "https://ksuite.infomaniak.com/mail/" \
-    "https://leboncoin.fr" \
+    "https://leboncoin.fr" &
+sleep 1
+
+firefox \
     "https://chat.qwen.ai" \
     "https://chatgpt.com" \
     "https://claude.ai/new" &
