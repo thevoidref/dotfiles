@@ -7,7 +7,7 @@ firefox \
     "https://ksuite.infomaniak.com/mail/" \
     "https://leboncoin.fr" &
 sleep 1  # let firefox own the profile before the 2nd window
-firefox --new-window \
+firefox \
     "https://chat.qwen.ai" \
     "https://chatgpt.com" \
     "https://claude.ai/new" &
