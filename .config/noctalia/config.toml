@@ -168,7 +168,7 @@ override_duration = 2500
 enable_volume_sounds = true
 sound_volume         = 1
 enable_sounds        = true
-sound_theme          = "tide"   # ~/.local/share/sounds/tide (fallback freedesktop)
+notification_sound = "~/.config/noctalia/SFX/notification.oga"
 # silence total notifs : enable_notification_sounds = false
 
 [osd]
@@ -238,17 +238,25 @@ hide_past_events = true
 [calendar]
 enabled         = true
 refresh_minutes = 10
+dedupe_events   = true   # event présent dans les 2 → affiché 1 fois
 
 [calendar.account.perso]
 type      = "google"
 name      = "Perso"
-calendars = []   # [] = ceux cochés dans Google Agenda
+calendars = []
+color     = "#4C8BF5"
+
+[calendar.account.pro]
+type      = "google"
+name      = "Pro"
+calendars = []
+color     = "#E8A33D"
 
 [calendar.reminders]
 enabled              = true
 use_event_reminders  = true
 default_lead_minutes = 10
-all_day_digest_time  = "08:30"
+all_day_digest_time  = "07:30"
 
 # ── Widgets bureau ────────────────────────────────────────────
 # Ajuster la position : noctalia msg desktop-widgets-edit

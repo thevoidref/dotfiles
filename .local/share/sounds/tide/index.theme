@@ -1,7 +1,0 @@
-[Sound Theme]
-Name=Tide
-Inherits=freedesktop
-Directories=stereo
-
-[stereo]
-OutputProfile=stereo

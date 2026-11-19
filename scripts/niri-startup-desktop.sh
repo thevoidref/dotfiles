@@ -20,3 +20,7 @@ codium ~/.dotfiles &
 codium ~/Code/Nixos/main &
 thunar ~/Music/Stream/ &
 tauon &
+
+sleep 3  # Avoid app taking focus
+niri msg action focus-workspace B2
+niri msg action focus-workspace A2
