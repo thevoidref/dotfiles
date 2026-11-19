@@ -129,7 +129,7 @@ path = "/home/void/Pictures/Wallpapers/NonFree/Laptop/wallhaven-0p83ge_1920x1200
 [theme]
 mode             = "dark"
 source           = "wallpaper"
-wallpaper_scheme = "m3-tonal-spot"
+wallpaper_scheme = "m3-content"   # colle au teal du fond (tonal-spot délavait)
 
 [theme.templates]
 enable_builtin_templates   = true
@@ -140,10 +140,35 @@ community_ids              = ["telegram", "yazi", "steam", "pywalfox", "starship
 
 # ── Notifications / OSD ───────────────────────────────────────
 [notification]
-position           = "bottom_right"
-layer              = "overlay"
-background_opacity = 1.0
-scale = 0.95000000670552254
+position                = "top_right"     # sous la cloche de la barre
+layer                   = "overlay"
+width                   = 380
+scale                   = 0.95
+background_opacity      = 0.96
+border                  = false           # cohérent avec card/popup_borders
+offset_x                = 10
+offset_y                = 6
+newest_on_edge          = true
+max_visible             = 4
+follow_focused_output   = true            # 2 écrans : toast là où tu regardes
+history_retention_hours = 168
+filter_order            = ["niri"]
+
+# Captures niri : toast court, pas d'historique, pas de double son
+[notification.filter.niri]
+enabled           = true
+match             = "niri"
+show_toast        = true
+save_history      = false
+play_sound        = false
+override_duration = 2500
+
+# ── Sons ──────────────────────────────────────────────────────
+[audio]
+enable_volume_sounds = false
+sound_volume         = 0.35
+sound_theme          = "tide"   # ~/.local/share/sounds/tide (fallback freedesktop)
+# silence total notifs : enable_notification_sounds = false
 
 [osd]
 position           = "bottom_center"
@@ -204,44 +229,110 @@ type = "power_profile"
 [[control_center.shortcuts]]
 type = "caffeine"
 
+[control_center.calendar]
+hide_past_events = true
+
+# ── Calendrier (Google) ───────────────────────────────────────
+# Connexion : Settings → Calendar → Accounts → perso → Save and Connect
+[calendar]
+enabled         = true
+refresh_minutes = 10
+
+[calendar.account.perso]
+type      = "google"
+name      = "Perso"
+calendars = []   # [] = ceux cochés dans Google Agenda
+
+[calendar.reminders]
+enabled              = true
+use_event_reminders  = true
+default_lead_minutes = 10
+all_day_digest_time  = "08:30"
+
+# ── Widgets bureau ────────────────────────────────────────────
+# Ajuster la position : noctalia msg desktop-widgets-edit
+[desktop_widgets]
+enabled        = true
+schema_version = 2
+widget_order   = ["agenda"]
+
+[desktop_widgets.widget.agenda]
+type   = "calendar"
+output = "DP-1"
+cx     = 360.0    # zone sombre bas-gauche
+cy     = 1150.0
+
+[desktop_widgets.widget.agenda.settings]
+show_events        = true
+show_week_numbers  = true
+background_color   = "surface"
+background_opacity = 0.84
+background_radius  = 14.0
+background_padding = 16.0
+
 # ── Hooks ─────────────────────────────────────────────────────
 [hooks]
 colors_changed     = "bash ~/.dotfiles/scripts/starship-palette.sh"
 theme_mode_changed = "bash ~/.dotfiles/scripts/starship-palette.sh"
 
 # ── Bar ───────────────────────────────────────────────────────
+# Îlots flottants : 15 capsules → 7. Fond sombre fumé, icônes teal.
 [bar.main]
 position           = "top"
+thickness          = 36
 background_opacity = 0.0
 radius             = 12
 margin_ends        = 0
-margin_edge        = 0
-widget_spacing     = 6
+margin_edge        = 6
+padding            = 10
+widget_spacing     = 8
 font_scale         = 0.8
+font_family        = "Mona Sans Display"
+font_weight        = 600
+scale              = 1.05
 auto_hide          = false
+icon_color         = "primary"
 capsule            = true
-capsule_opacity    = 0.89999997988343239
+capsule_fill       = "surface"
+capsule_opacity    = 0.86
+capsule_thickness  = 0.82
+capsule_padding    = 9
 
-start  = ["control-center", "clock", "spacer", "cpu", "cpu-temp", "ram", "disk"]
-center = ["workspaces"]
-end    = ["notifications", "tray", "network", "bluetooth", "battery", "microphone", "volume", "media", "session"]
-
-# ── Bar widgets ───────────────────────────────────────────────
-capsule_thickness = 0.79999998584389687
-font_family = "Mona Sans Display"
-font_weight = 600
-icon_color = "secondary"
-scale = 1.0500000081956387
+start  = ["group:nav"]
+center = ["clock"]
+end    = ["media", "group:sys", "tray", "notifications", "group:link", "group:sound", "battery", "session"]
 
     [bar.main.dead_zone.actions]
     middle = "settings-open"
 
-[widget.clock]
-format         = "{:%H:%M %a, %b %d}"
-tooltip_format = "{:%H:%M %a, %b %d}"
+# Logo + workspaces dans un seul îlot
+[[bar.main.capsule_group]]
+id      = "nav"
+members = ["control-center", "workspaces"]
 
-[widget.spacer]
-length = 10
+# CPU visible, temp/ram/disque au survol
+[[bar.main.capsule_group]]
+id        = "sys"
+members   = ["cpu", "cpu-temp", "ram", "disk"]
+accordion = true
+
+[[bar.main.capsule_group]]
+id      = "link"
+members = ["network", "bluetooth"]
+
+# Volume visible, micro au survol
+[[bar.main.capsule_group]]
+id        = "sound"
+members   = ["volume", "microphone"]
+accordion = true
+
+# ── Bar widgets ───────────────────────────────────────────────
+[widget.clock]
+format         = "{:%H:%M  ·  %a %d %b}"
+tooltip_format = "{:%A %d %B %Y  ·  semaine %V}"
+
+    [widget.clock.actions]
+    left = "panel-toggle control-center calendar"
 
 [widget.cpu]
 type = "sysmon"
@@ -260,13 +351,18 @@ type = "sysmon"
 stat = "disk_used_pct"
 path = "/"
 
+# Pilules pures, actif allongé teal, urgent = rouge de l'œil
 [widget.workspaces]
-label_source              = "id"
-max_label_chars           = 2
-labels_only_when_occupied = true
-focused_color             = "primary"
-occupied_color            = "secondary"
-empty_color               = "tertiary"
+show_labels        = false
+pill_scale         = 0.62
+active_pill_size   = 2.6
+focused_color      = "primary"
+occupied_color     = "secondary"
+empty_color        = "surface_variant"
+urgent_color       = "error"
+
+[widget.network]
+peek = true   # SSID au survol seulement
 
 [widget.notifications]
 hide_when_no_unread = true
@@ -283,9 +379,13 @@ device = "input"
 
 [widget.media]
 artist_first       = true
-max_length         = 145
+min_length         = 40
+max_length         = 200
+hide_album_art     = true
 title_scroll       = "on_hover"
 hide_when_no_media = true
+hide_when_idle     = true
+
 [lockscreen_widgets]
 enabled = false
 schema_version = 2

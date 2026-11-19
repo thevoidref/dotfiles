@@ -13,9 +13,10 @@ firefox \
     "https://claude.ai/new" &
 
 foot --app-id=cmatrix -e cmatrix &
+sleep 0.3
 foot --app-id=btop -e btop &
 vesktop &
-codium ~/Code/Nixos/main &
 codium ~/.dotfiles &
+codium ~/Code/Nixos/main &
 thunar ~/Music/Stream/ &
 tauon &
