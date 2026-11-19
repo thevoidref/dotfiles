@@ -1,0 +1,352 @@
+# Noctalia v5 — only non-default values.
+# GUI changes in ~/.local/state/noctalia/settings.toml override this file.
+config_version = 14
+
+[accessibility]
+ui_scale = 0.95
+
+[shell]
+font_family          = "Inter Display"
+avatar_path          = "/home/void/.face"
+telemetry_enabled    = false
+clipboard_enabled    = true
+clipboard_auto_paste = "off"
+app_icon_color = "on_surface"
+card_borders = false
+popup_borders = false
+
+[shell.panel]
+transparency_mode = "solid"
+control_center_placement = "floating"
+wallpaper_placement = "floating"
+session_placement = "floating"
+
+[shell.animation]
+enabled = true
+speed   = 1.5000000223517418
+
+[shell.shadow]
+direction = "down_right"
+
+[shell.screen_corners]
+enabled = true
+
+[shell.launcher]
+categories    = false
+sort_by_usage = false
+compact = true
+
+[shell.launcher.dmenu.entry.projects]
+command = "/home/void/.dotfiles/scripts/launcher/projects.fish"
+exec = "/home/void/.dotfiles/scripts/launcher/projects.fish {selection}"
+label = "Projects"
+prefix = "proj"
+glyph = "code"
+global = false
+
+[shell.launcher.dmenu.entry.pages]
+command = "/home/void/.dotfiles/scripts/launcher/pages.fish"
+exec = "/home/void/.dotfiles/scripts/launcher/pages.fish {selection}"
+label = "Pages"
+prefix = "pag"
+glyph = "world"
+global = false
+
+[shell.launcher.dmenu.entry.prompts]
+command = "/home/void/.dotfiles/scripts/launcher/prompts.fish"
+exec = "/home/void/.dotfiles/scripts/launcher/prompts.fish {selection}"
+label = "Prompts"
+prefix = "prom"
+glyph = "clipboard"
+global = false
+
+# ── Session menu ──────────────────────────────────────────────
+
+        [shell.launcher.providers.calculator]
+        global = true
+
+        [shell.launcher.providers.windows]
+        global = false
+
+[[shell.session.actions]]
+action = "lock"
+shortcut = "1"
+countdown_seconds = 2
+
+[[shell.session.actions]]
+action = "suspend"
+shortcut = "2"
+countdown_seconds = 2
+
+[[shell.session.actions]]
+action = "logout"
+shortcut = "3"
+countdown_seconds = 2
+
+[[shell.session.actions]]
+action = "reboot"
+shortcut = "4"
+countdown_seconds = 2
+
+[[shell.session.actions]]
+action = "reboot_uefi"
+shortcut = "5"
+countdown_seconds = 2
+
+[[shell.session.actions]]
+action = "shutdown"
+shortcut = "6"
+countdown_seconds = 2
+variant = "destructive"
+
+# ── Wallpaper ─────────────────────────────────────────────────
+[wallpaper]
+enabled             = true
+fill_mode           = "crop"
+directory           = "/home/void/Pictures/Wallpapers"
+transition          = ["honeycomb"]
+transition_duration = 1500
+edge_smoothness     = 0.05
+
+[wallpaper.automation]
+enabled          = false
+interval_seconds = 1800
+order            = "random"
+
+# ── Theme ─────────────────────────────────────────────────────
+
+[wallpaper.default]
+path = "/home/void/Pictures/Wallpapers/NonFree/Laptop/wallhaven-0p83ge_1920x1200.png"
+
+[wallpaper.last]
+path = "/home/void/Pictures/Wallpapers/NonFree/Laptop/wallhaven-0p83ge_1920x1200.png"
+
+[wallpaper.monitors.DP-1]
+path = "/home/void/Pictures/Wallpapers/NonFree/Laptop/wallhaven-0p83ge_1920x1200.png"
+
+[wallpaper.monitors.DP-2]
+path = "/home/void/Pictures/Wallpapers/NonFree/Laptop/wallhaven-0p83ge_1920x1200.png"
+[theme]
+mode             = "dark"
+source           = "wallpaper"
+wallpaper_scheme = "m3-tonal-spot"
+
+[theme.templates]
+enable_builtin_templates   = true
+builtin_ids                = [ "btop", "cava", "foot", "gtk3", "ghostty", "niri", "qt" ]
+enable_community_templates = true
+# verify names: noctalia theme --list-templates
+community_ids              = ["telegram", "yazi", "steam", "pywalfox", "starship", "discord", "code"]
+
+# ── Notifications / OSD ───────────────────────────────────────
+[notification]
+position           = "bottom_right"
+layer              = "overlay"
+background_opacity = 1.0
+scale = 0.95000000670552254
+
+[osd]
+position           = "bottom_center"
+background_opacity = 0.95
+
+# ── Lock screen ───────────────────────────────────────────────
+[lockscreen]
+enabled        = true
+blur_intensity = 0.5
+tint_intensity = 0.05
+
+# ── Weather / location / night light ──────────────────────────
+[weather]
+enabled = true
+unit    = "celsius"
+effects = true
+
+[location]
+auto_locate = false
+address     = "Authume"
+
+[nightlight]
+enabled           = false
+temperature_day   = 6500
+temperature_night = 4080
+
+# ── Idle ──────────────────────────────────────────────────────
+[idle]
+pre_action_fade_seconds = 5.0
+behavior_order = ["screen-off", "lock", "suspend"]
+
+[idle.behavior.screen-off]
+enabled = true
+timeout = 600
+action  = "screen_off"
+
+[idle.behavior.lock]
+enabled = true
+timeout = 660
+action  = "lock"
+
+[idle.behavior.suspend]
+enabled = true
+timeout = 1800
+action  = "suspend"
+
+# ── Control center ────────────────────────────────────────────
+[[control_center.shortcuts]]
+type = "wifi"
+[[control_center.shortcuts]]
+type = "bluetooth"
+[[control_center.shortcuts]]
+type = "wallpaper"
+[[control_center.shortcuts]]
+type = "notification"
+[[control_center.shortcuts]]
+type = "power_profile"
+[[control_center.shortcuts]]
+type = "caffeine"
+
+# ── Hooks ─────────────────────────────────────────────────────
+[hooks]
+colors_changed     = "bash ~/.dotfiles/scripts/starship-palette.sh"
+theme_mode_changed = "bash ~/.dotfiles/scripts/starship-palette.sh"
+
+# ── Bar ───────────────────────────────────────────────────────
+[bar.main]
+position           = "top"
+background_opacity = 0.0
+radius             = 12
+margin_ends        = 0
+margin_edge        = 0
+widget_spacing     = 6
+font_scale         = 0.8
+auto_hide          = false
+capsule            = true
+capsule_opacity    = 0.89999997988343239
+
+start  = ["control-center", "clock", "spacer", "cpu", "cpu-temp", "ram", "disk"]
+center = ["workspaces"]
+end    = ["notifications", "tray", "network", "bluetooth", "battery", "microphone", "volume", "media", "session"]
+
+# ── Bar widgets ───────────────────────────────────────────────
+capsule_thickness = 0.79999998584389687
+font_family = "Mona Sans Display"
+font_weight = 600
+icon_color = "secondary"
+scale = 1.0500000081956387
+
+    [bar.main.dead_zone.actions]
+    middle = "settings-open"
+
+[widget.clock]
+format         = "{:%H:%M %a, %b %d}"
+tooltip_format = "{:%H:%M %a, %b %d}"
+
+[widget.spacer]
+length = 10
+
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+
+[widget.cpu-temp]
+type = "sysmon"
+stat = "cpu_temp"
+
+[widget.ram]
+type = "sysmon"
+stat = "ram_pct"
+
+[widget.disk]
+type = "sysmon"
+stat = "disk_used_pct"
+path = "/"
+
+[widget.workspaces]
+label_source              = "id"
+max_label_chars           = 2
+labels_only_when_occupied = true
+focused_color             = "primary"
+occupied_color            = "secondary"
+empty_color               = "tertiary"
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.tray]
+drawer = true
+
+[widget.battery]
+display_mode = "graphic"
+
+[widget.microphone]
+type   = "volume"
+device = "input"
+
+[widget.media]
+artist_first       = true
+max_length         = 145
+title_scroll       = "on_hover"
+hide_when_no_media = true
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+

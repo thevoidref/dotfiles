@@ -1,7 +1,5 @@
-# SSH — jamais
+# Secrets
 .ssh/
-
-# Secrets génériques
 *.pem
 *.key
 id_*
@@ -12,13 +10,13 @@ id_*
 .netrc
 .git-credentials
 
-# Perso / privé
+# Private
 strings/
-
-# Images copyright
 .mozilla/startpage-main/makima.jpg
 
-# Bruit
+# Archives / noise
+*.zip
+*.tar*
 .DS_Store
 *.swp
 *~

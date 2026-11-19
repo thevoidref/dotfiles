@@ -2,14 +2,16 @@
 	name = thevoidref
 	email = 288313904+thevoidref@users.noreply.github.com
 [core]
-	editor = codium
+	editor = codium --wait
+[commit]
+	template = ~/.config/git/commit_message.txt
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [push]
-    autoSetupRemote = true
+	autoSetupRemote = true
 [credential "https://github.com"]
-	helper = 
-	helper = !/nix/store/7w7p8hgparknybf096lll4jzcgaziyjf-gh-2.104.0/bin/.gh-wrapped auth git-credential
+	helper =
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/nix/store/7w7p8hgparknybf096lll4jzcgaziyjf-gh-2.104.0/bin/.gh-wrapped auth git-credential
+	helper =
+	helper = !gh auth git-credential
