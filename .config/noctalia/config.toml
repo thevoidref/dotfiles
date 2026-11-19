@@ -129,7 +129,7 @@ path = "/home/void/Pictures/Wallpapers/NonFree/Laptop/wallhaven-0p83ge_1920x1200
 [theme]
 mode             = "dark"
 source           = "wallpaper"
-wallpaper_scheme = "m3-content"   # colle au teal du fond (tonal-spot délavait)
+wallpaper_scheme = "m3-tonal-spot"
 
 [theme.templates]
 enable_builtin_templates   = true
@@ -165,8 +165,9 @@ override_duration = 2500
 
 # ── Sons ──────────────────────────────────────────────────────
 [audio]
-enable_volume_sounds = false
-sound_volume         = 0.35
+enable_volume_sounds = true
+sound_volume         = 1
+enable_sounds        = true
 sound_theme          = "tide"   # ~/.local/share/sounds/tide (fallback freedesktop)
 # silence total notifs : enable_notification_sounds = false
 
@@ -313,7 +314,7 @@ members = ["control-center", "workspaces"]
 # CPU visible, temp/ram/disque au survol
 [[bar.main.capsule_group]]
 id        = "sys"
-members   = ["cpu", "cpu-temp", "ram", "disk"]
+members   = ["ram", "cpu", "cpu-temp", "disk"]
 accordion = true
 
 [[bar.main.capsule_group]]
